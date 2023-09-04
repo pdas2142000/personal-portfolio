@@ -1,0 +1,87 @@
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variable.scss";
+
+.projects-showcase {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+  //   height: 570px;
+  justify-content: center;
+  @include small-screen {
+    height: 570px;
+    justify-content: unset;
+  }
+  .showcase-item {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    @include transition;
+    @include small-screen {
+      width: 265px;
+      height: 265px;
+      border-radius: 16px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .meta-content {
+      visibility: visible;
+      opacity: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0px;
+      padding: 10px;
+      //   margin-right: 20px;
+      //   border-radius: 10px;
+      width: 100%;
+      @include glassmorphism-effect;
+      @include transition;
+      @include small-screen {
+        width: fit-content;
+        visibility: hidden;
+        margin-right: 20px;
+        padding: 10px;
+        left: 20px;
+        border-radius: 10px;
+      }
+      h3 {
+        color: $black;
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+      .go-to-cta {
+        display: flex;
+        align-items: center;
+        .text {
+          @include typography(10px, 400, 18px);
+        }
+        .arrow-icon {
+          width: 15px;
+          height: 15px;
+          margin-left: 5px;
+        }
+      }
+    }
+    &:hover {
+      @include small-screen {
+        z-index: 1;
+        transform: scale(1.1);
+        box-shadow: 0 0 33px -8px rgba(0, 0, 0, 0.75);
+        .meta-content {
+          visibility: visible;
+          opacity: 1;
+          transform: translateY(-20px);
+        }
+      }
+    }
+  }
+}
